@@ -7,6 +7,13 @@
   <script>
     window.onload = function() {
       var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      
+      // Verifica se deve redirecionar para o App
+      var params = new URLSearchParams(window.location.search);
+      var redirect = params.get("redirect");
+      if (!!redirect) {
+        window.location.href = redirect;
+      }
 
       // Verifica se o dispositivo é iOS
       if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
